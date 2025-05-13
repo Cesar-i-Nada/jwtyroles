@@ -18,16 +18,16 @@ class Proveedor(models.Model):
     email_empresa_proveedor = models.EmailField(max_length=255, unique=True, blank=False, null=False)
     
     def __str__ (self): 
-            return self.nombre_proveedor, self.apellido_proveedor, self.empresa_proveedor, self.telefono_proveedor, self.email_empresa
+            return self.nombre_proveedor, self.apellido_proveedor, self.empresa_proveedor, self.telefono_proveedor, self.email_empresa_proveedor
 
 class Producto(models.Model):
     nombre_producto = models.CharField(max_length=50, blank=False, null=False)
     precio_producto = models.DecimalField(max_digits=10, decimal_places=2)
-    cantidad_producto = models.IntegerField()
+    cantidad_producto_stock = models.IntegerField()
     proveedor_producto = models.ForeignKey(Proveedor,on_delete=models.CASCADE, blank=False, null=False)
     
     def __str__ (self): 
-            return self.nombre_producto, self.precio_producto, self.cantidad_producto, self.proveedor_producto
+            return self.nombre_producto, self.precio_producto, self.cantidad_producto_stock, self.proveedor_producto
 
 class Empleado(models.Model):
     nombre_empleado = models.CharField(max_length=30, blank=False, null=False)

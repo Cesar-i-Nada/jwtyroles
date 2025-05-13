@@ -1,6 +1,6 @@
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from .models import Cliente, Producto, Proveedor, Empleado, MetodoPago, Pedido, PedidoProducto
-from .serializers import ClienteSerializer, ProductoSerializer, ProveedorSerializer, EmpleadoSerializer, MetodoPagoSerializer, PedidoSerializer, PedidoProductoSerializer
+from .models import Cliente, Proveedor, Producto, Empleado, MetodoPago, Pedido, PedidoProducto
+from .serializers import ClienteSerializer, ProveedorSerializer, ProductoSerializer, EmpleadoSerializer, MetodoPagoSerializer, PedidoSerializer, PedidoProductoSerializer
 
 class ClienteListCreateView(ListCreateAPIView):
     queryset = Cliente.objects.all()
@@ -9,15 +9,7 @@ class ClienteListCreateView(ListCreateAPIView):
 class ClienteDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Cliente.objects.all()
     serializer_class = ClienteSerializer
-    
-class ProductoListCreateView(ListCreateAPIView):
-    queryset = Producto.objects.all()
-    serializer_class = ProductoSerializer
-    
-class ProductoDetailView(RetrieveUpdateDestroyAPIView):
-    queryset = Producto.objects.all()
-    serializer_class = ProductoSerializer
-    
+        
 class ProveedorListCreateView(ListCreateAPIView):
     queryset = Proveedor.objects.all()
     serializer_class = ProveedorSerializer
@@ -25,6 +17,14 @@ class ProveedorListCreateView(ListCreateAPIView):
 class ProveedorDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Proveedor.objects.all()
     serializer_class = ProveedorSerializer
+    
+class ProductoListCreateView(ListCreateAPIView):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoSerializer
+    
+class ProductoDetailView(RetrieveUpdateDestroyAPIView):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoSerializer    
     
 class EmpleadoListCreateView(ListCreateAPIView):
     queryset = Empleado.objects.all()
