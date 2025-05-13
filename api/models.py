@@ -8,7 +8,7 @@ class Cliente(models.Model):
     direccion_cliente = models.CharField(max_length=255, blank=False, null=False)
     
     def __str__ (self): 
-            return self.nombre_cliente, self.apellido_cliente, self.telefono_cliente, self.email_cliente, self.direccion_cliente
+        return f"{self.nombre_cliente} {self.apellido_cliente} {self.telefono_cliente} {self.email_cliente} {self.direccion_cliente}"
         
 class Proveedor(models.Model): 
     nombre_proveedor = models.CharField(max_length=30, blank=False, null=False)
@@ -18,17 +18,18 @@ class Proveedor(models.Model):
     email_empresa_proveedor = models.EmailField(max_length=255, unique=True, blank=False, null=False)
     
     def __str__ (self): 
-            return self.nombre_proveedor, self.apellido_proveedor, self.empresa_proveedor, self.telefono_proveedor, self.email_empresa_proveedor
+        return f"{self.nombre_proveedor} {self.apellido_proveedor} {self.empresa_proveedor} {self.telefono_proveedor} {self.email_empresa_proveedor}"
 
 class Producto(models.Model):
     nombre_producto = models.CharField(max_length=50, blank=False, null=False)
     precio_producto = models.DecimalField(max_digits=10, decimal_places=2)
     cantidad_producto_stock = models.IntegerField()
     proveedor_producto = models.ForeignKey(Proveedor,on_delete=models.CASCADE, blank=False, null=False)
-    
-    def __str__ (self): 
-            return self.nombre_producto, self.precio_producto, self.cantidad_producto_stock, self.proveedor_producto
+     
+    def __str__ (self):
+        return f"{self.nombre_producto} {self.precio_producto} {self.cantidad_producto_stock} {self.proveedor_producto}"
 
+    
 class Empleado(models.Model):
     nombre_empleado = models.CharField(max_length=30, blank=False, null=False)
     apellido_empleado = models.CharField(max_length=50, blank=False, null=False)
@@ -36,7 +37,7 @@ class Empleado(models.Model):
     email_empleado = models.EmailField(max_length=255, unique=True, blank=False, null=False)
     
     def __str__ (self): 
-            return self.nombre_empleado, self.apellido_empleado, self.cargo_empleado, self.email_empleado
+        return f"{self.nombre_empleado} {self.apellido_empleado} {self.cargo_empleado} {self.email_empleado}"
 
 class MetodoPago(models.Model):
     tipo_metodo_pago = models.CharField(max_length=30, blank=False, null=False)
@@ -53,7 +54,7 @@ class Pedido(models.Model):
     empleado_pedido = models.ForeignKey(Empleado, on_delete=models.CASCADE, blank=False, null=False)
     
     def __str__ (self): 
-            return self.nombre_producto, self.tipo_metodo_pago, self.fecha_pedido, self.cantidad_producto_pedido, self.cliente_pedido, self.empleado_pedido
+        return f"{self.nombre_producto} {self.tipo_metodo_pago} {self.fecha_pedido} {self.cantidad_producto_pedido} {self.cliente_pedido} {self.empleado_pedido}"
         
 class PedidoProducto(models.Model):
     nombre_producto = models.ForeignKey(Producto,on_delete=models.CASCADE, blank=False, null=False)
@@ -61,4 +62,4 @@ class PedidoProducto(models.Model):
 
     
     def __str__ (self): 
-            return self.nombre_producto, self.pedido_producto         
+        return f"{self.nombre_producto} {self.pedido_producto}"
